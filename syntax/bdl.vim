@@ -21,14 +21,18 @@ syntax keyword BdlKeyword INPUT TITLE DIAGNOSTIC ABORT RUN-PERIOD SCHEDULE WEEK-
 syntax keyword BdlKeyword SITE-PARAMETERS BUILD-PARAMETERS LAYERS CONSTRUCTION GLASS-TYPE SPACE EXTERIOR-WALL ROOF WINDOW DOOR INTERIOR-WALL UNDERGROUND-WALL UNDERGROUND-FLOOR LOADS-REPORT
 syntax keyword BdlKeyword SYSTEM ZONE DAY-RESET-SCH RESET-SCHEDULE SYSTEMS-REPORT
 syntax keyword BdlKeyword ELEC-METER FUEL-METER MASTER-METERS PUMP CIRCULATION-LOOP BOILER CHILLER HEAT-REJECTION DW-HEATER
-syntax keyword BdlKeyword UTILITY-RATE BLOCK-CHARGE UTILTIY-RATE ECONOMICS-REPORT
+syntax keyword BdlKeyword UTILITY-RATE BLOCK-CHARGE ECONOMICS-REPORT
 
-syntax region BdlString start=/"/ end=/"/
-syntax region BdlComment start=/\$/ end=/\$/
+syntax match BdlTerminator /\.\./
+
+syntax region BdlString start=/"/ skip=/\\"/ end=/"/
+syntax region BdlComment start=/\$/ end=/\$\|$/
+
 
 highlight link BdlKeyword Keyword
 highlight link BdlString String
 highlight link BdlComment Comment
+highlight link BdlTerminator Constant
 
 " I like the italics and light gray works for me.
 " highlight NeobemComment cterm=italic ctermfg=8 gui=italic guifg=LightGray
